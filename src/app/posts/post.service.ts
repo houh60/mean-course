@@ -4,15 +4,13 @@ import { Subject } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  private posts: Post[] = [];
-  private postsUpdated = new Subject();
+  private posts: Post[] = [
+    { title: 'dfd', content: 'dfdfdaeefd' }
+  ];
+  postsUpdated = new Subject();
 
   getPosts() {
     return [...this.posts];
-  }
-
-  getUpdatedPost() {
-    return this.postsUpdated.asObservable();
   }
 
   addPost(p: Post) {
