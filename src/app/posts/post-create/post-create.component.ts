@@ -21,7 +21,8 @@ export class PostCreateComponent {
     const post: Post = {
       id: null,
       title: form.value.title,
-      content: form.value.content
+      content: form.value.content,
+      date: '' + new Date()
     };
     this.postService.addPost(post);
   }
