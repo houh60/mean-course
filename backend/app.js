@@ -18,11 +18,7 @@ mongoose.connect('mongodb+srv://William:nKCuqEUG4Mtk9AwW@cluster0.gkvfa.mongodb.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const posts = [
-  // { id: 'dwe25ere33', title: '1st server-side post', content: 'This is coming from the server!' },
-  // { id: '3434eredle', title: '2nd server-side post', content: 'This is coming from the server!' },
-];
-
+const posts = [];
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
