@@ -7,7 +7,7 @@ const Post = require('./models/post');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://William:sdfd@cluster0.gkvfa.mongodb.net/MEAN?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://@cluster0.gkvfa.mongodb.net/MEAN?retryWrites=true&w=majority')
   .then(() => {
     console.log('Connected to database!');
   })
