@@ -5,3 +5,8 @@ mat-expansion-panel {
 .info-text {
   text-align: center;
 }
+
+.post-image,
+.post-image img {
+  width: 100%;
+}

@@ -38,11 +38,12 @@ export class PostCreateComponent implements OnInit {
         this.postId = paramMap.get('postId');
         this.isLoading = true;
         this.postService.getPost(this.postId).subscribe(postData => {
-          this.post = { id: postData._id, title: postData.title, content: postData.content, date: postData.date };
+          this.post = { id: postData._id, title: postData.title, content: postData.content, date: postData.date, imagePath: postData.imagePath };
           this.isLoading = false;
           this.form.setValue({
             title: this.post.title,
-            content: this.post.content
+            content: this.post.content,
+            image: this.post.imagePath
           });
         });
       } else {
@@ -56,8 +57,6 @@ export class PostCreateComponent implements OnInit {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ image: file });
     this.form.get('image').updateValueAndValidity();
-    console.log("file: ", file);
-    console.log("this.form: ", this.form);
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;
@@ -74,12 +73,13 @@ export class PostCreateComponent implements OnInit {
       id: null,
       title: this.form.value.title,
       content: this.form.value.content,
-      date: '' + new Date()
+      date: '' + new Date(),
+      imagePath: ''
     };
     if (this.mode == 'create') {
-      this.postService.addPost(post);
+      this.postService.addPost(post, this.form.value.image);
     } else {
-      this.postService.updatePost(this.postId, this.form.value.title, this.form.value.content);
+      this.postService.updatePost(this.postId, this.form.value.title, this.form.value.content, this.post.date, this.form.value.image);
     }
     this.form.reset();
   }
